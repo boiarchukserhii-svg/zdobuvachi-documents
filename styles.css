@@ -9,3 +9,6 @@
 
 .search-open{display:inline-flex;align-items:center;justify-content:center;gap:7px}.search-open.filtered{background:#e7f0ff;border-color:#7ba7e0}#search-dialog .filters{grid-template-columns:1fr 1fr;padding:0;border:0}#search-dialog .filters label:first-child{grid-column:1/-1}@media(max-width:560px){.record-sections{gap:7px}.record-sections button{min-width:0;flex:1;padding:11px 8px}#search-dialog .filters{grid-template-columns:1fr}#search-dialog .filters label:first-child{grid-column:auto}}
 
+
+@media(max-width:560px){.record-sections{gap:5px}.record-sections button{padding:11px 6px;font-size:13px;min-width:0}.record-sections .search-open{gap:4px}.record-sections .search-open svg{width:16px;height:16px;flex-shrink:0}}
+
