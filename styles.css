@@ -3,3 +3,6 @@
 
 .login-card{max-width:520px;margin:35px auto;background:white;border:1px solid var(--line);border-radius:22px;padding:32px;text-align:center}.login-card p{line-height:1.7;color:#62768c}.login-icon{color:#205db4;font-size:48px}button:disabled{opacity:.55;cursor:wait}
 
+
+
+.record-sections{display:flex;gap:8px;margin-bottom:18px}.record-sections button{min-width:110px}.record-sections .selected{background:#205db4;border-color:#205db4;color:white}.document-checklist{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;border-top:1px solid #e3eaf3;padding-top:14px;width:100%;font-size:12px}.checklist-item{display:flex;align-items:center;gap:7px;min-height:24px;text-align:left;line-height:1.35}.complete{color:#246f57}.incomplete{color:#728297}.check-mark{display:inline-flex;align-items:center;justify-content:center;flex:0 0 19px;height:19px;border:1.5px solid #becbd9;border-radius:6px;font-size:14px;font-weight:700}.complete .check-mark{background:#e4f3eb;color:#267b57;border-color:#85bfa4}.exempt-label{display:block;font-size:10px;color:#577969}.card{min-height:0}
