@@ -18,7 +18,7 @@ async function loadRecords(){
 }
 async function persist(next){if(!ready||!ownerUid)throw Error('Дочекайтеся завантаження даних.');if(saving)throw Error('Попереднє збереження ще триває.');const uid=ownerUid;saving=true;try{const result=await store.save(next,revision);if(ownerUid!==uid)throw Error('Сеанс завершено.');records=next;revision=result.revision;lastSaved=result.updatedAt;render();}catch(e){throw Error(store.errorText(e));}finally{saving=false;}}
 const councilCollator=new Intl.Collator('uk',{numeric:true,sensitivity:'base'});
-function compareCouncil(a,b){const clean=r=>String(r.councilNumber||'').replace(/^РСВР\s*/iu,'').trim(),left=clean(a),right=clean(b);return (!left)-(!right)||councilCollator.compare(left,right)||a.name.localeCompare(b.name,'uk');}
+function compareCouncil(a,b){const clean=r=>String(r.councilNumber||'').replace(/^РСВР\s*/iu,'').trim(),left=clean(a),right=clean(b);return (!left)-(!right)||councilCollator.compare(right,left)||a.name.localeCompare(b.name,'uk');}
 const completed=(record,key)=>record.statuses[key]==='done'||(key==='payment'&&record.statuses[key]==='notRequired');
 const archived=record=>fields.every(([key])=>completed(record,key));
 const recordSection=record=>!String(record.councilNumber||'').trim()?'future':archived(record)?'archive':'active';
@@ -48,6 +48,7 @@ window.addEventListener('focus',()=>{if(ready&&ownerUid&&!saving&&!$('editor').o
 
 $('search-open').onclick=()=>{$('search-dialog').showModal();$('search-close').focus({preventScroll:true});};$('search-close').onclick=$('search-show').onclick=()=>$('search-dialog').close();$('search-reset').onclick=()=>{for(const id of ['query','program','filter','filter-state'])$(id).value='';render();};
 render();
+
 
 
 
