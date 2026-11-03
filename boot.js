@@ -1,4 +1,4 @@
-import('./app.js?v=16').catch(()=>{document.getElementById('login-state').textContent='Не вдалося підключити застосунок. Перевірте інтернет та оновіть сторінку.';});
+import('./app.js?v=17').catch(()=>{document.getElementById('login-state').textContent='Не вдалося підключити застосунок. Перевірте інтернет та оновіть сторінку.';});
 
 
 

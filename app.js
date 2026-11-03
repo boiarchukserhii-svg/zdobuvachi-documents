@@ -21,7 +21,7 @@ async function persist(next){if(!ready||!ownerUid)throw Error('Дочекайт�
 const councilCollator=new Intl.Collator('uk',{numeric:true,sensitivity:'base'});
 function compareCouncil(a,b){const clean=r=>String(r.councilNumber||'').replace(/^РСВР\s*/iu,'').trim(),left=clean(a),right=clean(b);return (!left)-(!right)||councilCollator.compare(right,left)||a.name.localeCompare(b.name,'uk');}
 const completed=(record,key)=>record.statuses[key]==='done';
-const archived=record=>fields.every(([key])=>extraFields.has(key)||completed(record,key));
+const archived=record=>fields.every(([key])=>completed(record,key));
 const recordSection=record=>record.trashedAt?"trash":!String(record.councilNumber||'').trim()?'future':archived(record)?'archive':'active';
 const sectionLabels={future:'Майбутні',active:'Активні',archive:'Архів',trash:'Кошик'};
 function checklist(record){return '<span class="document-checklist" role="list">'+fields.filter(([key])=>key!=='payment'||record.statuses.payment!=='notRequired').map(([key,label])=>{const done=completed(record,key),text=options(key).find(([value])=>value===record.statuses[key])?.[1]||'Не зазначено';return `<span class="checklist-item ${done?'complete':'incomplete'}" role="listitem" title="${esc(label+': '+text)}" aria-label="${esc(label+': '+text)}"><span class="check-mark" aria-hidden="true">${done?'✓':''}</span><span>${esc(label)}</span></span>`;}).join('')+'</span>';}
