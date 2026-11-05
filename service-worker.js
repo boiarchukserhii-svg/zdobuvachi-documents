@@ -1,4 +1,4 @@
-const CACHE='zdobuvachi-documents-shell-v17';
+const CACHE='zdobuvachi-documents-shell-v18';
 const SHELL=['./install.js?v=4','./excel-export.js?v=3','./','./index.html','./styles.css?v=11','./app.js?v=17','./backend.js?v=1','./boot.js?v=17','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('zdobuvachi-documents-shell-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
